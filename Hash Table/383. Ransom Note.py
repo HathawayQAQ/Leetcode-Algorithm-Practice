@@ -3,8 +3,14 @@ class Solution {
 
        HashMap<Character, Integer> map = new HashMap<>();
        for (char c : magazine.toCharArray()) {
-           map.put(c, map.getOrDefault(c, 0) + 1);
+            if (map.containsKey(c)) {
+                int count = map.get(c);
+                map.put(c, count + 1);
+            } else {
+                map.put(c, 1);
+            }
        }
+    
 
        for (char c : ransomNote.toCharArray()) {
            if (!map.containsKey(c) || map.get(c) < 1) {
